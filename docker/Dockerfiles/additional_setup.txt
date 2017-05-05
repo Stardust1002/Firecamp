@@ -1,0 +1,29 @@
+#!/bin/bash
+
+##### Installing the Tree Tagger lemmatizer
+export TREETAGGER_HOME=$HOME/treetagger
+
+mkdir /tmp/treetagger && \
+wget -P /tmp/treetagger http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/tree-tagger-linux-3.2.1.tar.gz && \
+mkdir ~/treetagger && \
+tar zxvf /tmp/treetagger/tree-tagger-linux-3.2.1.tar.gz -C ~/treetagger && \
+wget -P /tmp/treetagger http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/tagger-scripts.tar.gz && \
+tar zxvf /tmp/treetagger/tagger-scripts.tar.gz -C ~/treetagger && \
+wget -P ~/treetagger http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/install-tagger.sh && \
+wget -P /tmp/treetagger http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/english-par-linux-3.2-utf8.bin.gz && \
+gzip -d /tmp/treetagger/english-par-linux-3.2-utf8.bin.gz && mv /tmp/treetagger/english-par-linux-3.2-utf8.bin ~/treetagger/lib/english-utf8.par && \
+wget -P /tmp/treetagger http://cnrtl.fr/corpus/perceo/perceo_oral.zip && \
+unzip /tmp/treetagger/perceo_oral.zip -d /tmp/treetagger && mv /tmp/treetagger/perceo_oral/spoken-french.par ~/treetagger/lib/french-utf8.par && \
+cd ~/treetagger/ && \
+sh ./install-tagger.sh && \
+echo 'Hello World' | ./cmd/tree-tagger-english && \
+echo 'Ceci est un test' | ./cmd/tree-tagger-french
+
+rm -rf /tmp/treetagger
+
+##### Installing some nltk packages
+python -m nltk.downloader stopwords omw wordnet snowball_data
+
+##### Installing spacy models
+python -m spacy download en
+python -m spacy download fr
