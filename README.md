@@ -117,7 +117,8 @@ In a nutshell, all the hidden plumbing allows Data Scientists to edit base image
 ### Further Improvements
 
 * Write an exhaustive documentation and a FAQ section
-* Create a Docker Compose file generator to choose how many Spark/Cassandra/wtv nodes to run via a command line
+* Add new Big Data stacks
+* Create a Docker Compose file generator to choose a stack and the number of Spark/Cassandra/wtv nodes to run via a command line
 * Add more code examples
 * Improve the existing docker and docker-compose.yml files
 * Think really hard about Kubernetes

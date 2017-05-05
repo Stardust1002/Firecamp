@@ -23,7 +23,3 @@ rm -rf /tmp/treetagger
 
 ##### Installing some nltk packages
 python -m nltk.downloader stopwords omw wordnet snowball_data
-
-##### Installing spacy models
-python -m spacy download en
-python -m spacy download fr
